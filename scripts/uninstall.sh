@@ -14,7 +14,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 export DEBIAN_FRONTEND=noninteractive
-apt-get remove -y --purge telnet iputils-ping curl netcat-openbsd perl python-is-python3 python3 vim docker-ce-cli docker-compose-plugin || true
+apt-get remove -y --purge telnet iputils-ping curl netcat-openbsd perl python-is-python3 python3 vim jq sqlite3 docker-ce-cli docker-compose-plugin || true
 apt-get autoremove -y || true
 apt-get update -qq || true
 
