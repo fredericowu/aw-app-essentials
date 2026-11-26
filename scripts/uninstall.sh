@@ -15,6 +15,9 @@ fi
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get remove -y --purge telnet iputils-ping curl netcat-openbsd perl python-is-python3 python3 vim jq sqlite3 docker-ce-cli docker-compose-plugin || true
+# Chromium/Playwright libs (install_chromium_deps.sh) are deliberately NOT
+# purged: the workspace image owns libnss3 etc. and the installer may have
+# reused them, so removing them could break Chromium for other apps.
 apt-get autoremove -y || true
 apt-get update -qq || true
 

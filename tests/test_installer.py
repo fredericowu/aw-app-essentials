@@ -46,6 +46,7 @@ class SimpleCliInstallersTest(unittest.TestCase):
         (installer.install_perl, "install_perl.sh"),
         (installer.install_python, "install_python.sh"),
         (installer.install_vim, "install_vim.sh"),
+        (installer.install_chromium_deps, "install_chromium_deps.sh"),
         (installer.install_jq, "install_jq.sh"),
         (installer.install_sqlite3, "install_sqlite3.sh"),
         (installer.install_docker, "install_docker.sh"),
@@ -147,7 +148,7 @@ class AggregateInstallTest(unittest.TestCase):
         result = installer.install_all()
         self.assertEqual(
             set(result.keys()),
-            {"telnet", "ping", "curl", "nc", "perl", "python", "vim", "jq", "sqlite3", "docker",
+            {"telnet", "ping", "curl", "nc", "perl", "python", "vim", "chromium-deps", "jq", "sqlite3", "docker",
              "go", "gofmt", "terraform", "nvm", "node", "npm", "npx", "yarn", "pnpm", "brew"},
         )
 
