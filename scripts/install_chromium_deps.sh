@@ -20,12 +20,16 @@ deps_ok() {
   for bin in $PW_GLOB; do
     [ -f "$bin" ] || continue
     found=1
-    if ldd "$bin" 2>&1 | grep -q "not found"; then
+    local ldd_output
+    if ! ldd_output=$(ldd "$bin" 2>&1) || [[ "$ldd_output" == *"not found"* ]]; then
       return 1
     fi
   done
   [ "$found" -eq 1 ] && return 0
-  dpkg -s "${PKGS[@]}" >/dev/null 2>&1
+  local p
+  for p in "${PKGS[@]}"; do
+    [ "$(dpkg-query -W -f='${Status}' "$p" 2>/dev/null)" = "install ok installed" ] || return 1
+  done
 }
 
 if deps_ok; then
