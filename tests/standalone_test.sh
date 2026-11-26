@@ -18,7 +18,7 @@ export AW_APP_GO_VERSION="${AW_APP_GO_VERSION:-latest}"
 AW_BIN_DIR="/usr/local/bin"
 
 echo "== apt-based tools: telnet/ping/curl/nc/perl/python/vim/docker =="
-for s in install_telnet install_ping install_curl install_nc install_perl install_python install_vim install_docker; do
+for s in install_telnet install_ping install_curl install_nc install_perl install_python install_vim install_chromium_deps install_docker; do
   echo "-- ${s}.sh --"
   bash "scripts/${s}.sh"
 done
@@ -66,7 +66,7 @@ nvm --version
 brew --version
 
 echo "== idempotency re-run (each install script must be safe to run twice) =="
-for s in install_telnet install_ping install_curl install_nc install_perl install_python install_vim install_docker \
+for s in install_telnet install_ping install_curl install_nc install_perl install_python install_vim install_chromium_deps install_docker \
          install_terraform install_go install_nvm install_node install_yarn install_pnpm install_brew; do
   bash "scripts/${s}.sh"
 done

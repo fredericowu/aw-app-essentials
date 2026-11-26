@@ -1,6 +1,6 @@
 """
 Install/uninstall logic for every CLI this app installs: core networking/
-utilities (telnet, ping, curl, nc, perl, python, vim, jq, sqlite3, docker), Go, Terraform, the
+utilities (telnet, ping, curl, nc, perl, python, vim, chromium-deps, jq, sqlite3, docker), Go, Terraform, the
 Node.js dev toolkit (nvm, node, npm, npx, yarn, pnpm), and Homebrew.
 Invoked directly by tests/test_installer.py (subprocess mocked) and
 tests/standalone_test.sh (real, out-of-framework). EssentialsAppPlugin's
@@ -70,6 +70,10 @@ def install_perl() -> str:
 
 def install_python() -> str:
     return _run_script("install_python.sh")
+
+
+def install_chromium_deps() -> str:
+    return _run_script("install_chromium_deps.sh")
 
 
 def install_jq() -> str:
@@ -147,6 +151,7 @@ def install_all(terraform_version: str = "1.9.8", node_version: str = "lts", go_
         "perl": install_perl(),
         "python": install_python(),
         "vim": install_vim(),
+        "chromium-deps": install_chromium_deps(),
         "jq": install_jq(),
         "sqlite3": install_sqlite3(),
         "docker": install_docker(),

@@ -56,6 +56,12 @@
         "version": ">=3.9"
       },
       {
+        "name": "chromium-deps",
+        "installer": "scripts/install_chromium_deps.sh",
+        "version": ">=0",
+        "verify": "dpkg -s libnss3 libgbm1 libxkbcommon0 libasound2t64 libatk-bridge2.0-0t64 libglib2.0-0t64 >/dev/null 2>&1"
+      },
+      {
         "name": "vim",
         "installer": "scripts/install_vim.sh",
         "version": ">=8.0"

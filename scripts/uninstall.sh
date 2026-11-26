@@ -15,6 +15,9 @@ fi
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get remove -y --purge telnet iputils-ping curl netcat-openbsd perl python-is-python3 python3 vim jq sqlite3 docker-ce-cli docker-compose-plugin || true
+# Chromium/Playwright libs: only the browser-specific ones. libglib/libdbus/
+# libx11/libxcb are base-system deps of far more than chrome — never removed.
+apt-get remove -y --purge libnss3 libnspr4 libatk1.0-0t64 libatk-bridge2.0-0t64 libatspi2.0-0t64 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libxkbcommon0 libasound2t64 || true
 apt-get autoremove -y || true
 apt-get update -qq || true
 
